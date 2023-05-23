@@ -1,21 +1,12 @@
-#!/usr/bin/node
+#!/ust/bin/node
 
-const request = require('request');
+const fs = require('fs');
+const filename = process.argv[2];
 
-function readFile(filePath) {
-	request(filePath, {encoding: 'utf-8'}, (err, response, body) => {
-		if (err) {
-			console.error(err);
-			return;
-		}
-		console.log(body);
-	});
-}
-
-if (process.argv.length !== 3) {
-	console.error('Usage: 0-readme.js <file_url>')
-	process.exit(1);
-}
-
-const fileUrl =process.argv[2];
-readFile(fileUrl);
+fs.readFile(filename, 'uft-8', (error, content) => {
+	if (error) {
+		console.log(error);
+	} else {
+		console.log(content);
+	}
+});
